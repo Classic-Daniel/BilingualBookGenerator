@@ -24,3 +24,9 @@ class MainWindow:
 
     def run(self):
         self.mainwindow.mainloop()
+        
+    def setGenerateButtonAction(self, action):
+        self.generateAction = action
+        
+    def generate(self):
+        self.generateAction()

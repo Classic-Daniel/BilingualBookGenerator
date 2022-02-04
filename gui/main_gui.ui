@@ -65,7 +65,8 @@
       </object>
     </child>
     <child>
-      <object class="ttk.Button" id="button1">
+      <object class="ttk.Button" id="generateButton">
+        <property name="command" type="command" cbtype="simple">generate</property>
         <property name="text" translatable="yes">Generate Book</property>
         <layout manager="pack">
           <property name="pady">20</property>

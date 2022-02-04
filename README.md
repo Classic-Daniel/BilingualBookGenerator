@@ -21,7 +21,8 @@ Tool for generating Bilingual Books, where sentences in language A are matched t
 
 **Sources of free ebooks**:<br>
 https://www.gutenberg.org/<br>
-https://archive.org/details/texts?tab=about
+https://archive.org/details/texts?tab=about<br>
+Hungarian books: https://mek.oszk.hu/
 
 Matching unsupported languages is done using Google Translate's API. This feature is still experimental, Google Translate API is changing rapidly allows only limited traffic.
 
