@@ -1,1 +1,1 @@
-from pairing.pairing import matchEmbeddings
+from pairing.pairing import getMatchedSentences

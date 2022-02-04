@@ -3,27 +3,24 @@ import gui
 import file_parser
 import embedding
 import pairing
+import book_generator
+
+import numpy as np
 
 # temporary hardcoded generate action
 def generateAction():
     textParser = file_parser.Parser()
-    sentencesA = textParser.sentencesFromFile(os.path.dirname(__file__) + "/example_books/english/siddhartha_hesse.txt")
-    sentencesB = textParser.sentencesFromFile(os.path.dirname(__file__) + "/example_books/german/siddhartha_hesse.txt")
+    sentencesA = textParser.sentencesFromFile(os.path.dirname(__file__) + "/example_books/german/siddhartha_hesse.txt")
+    sentencesB = textParser.sentencesFromFile(os.path.dirname(__file__) + "/example_books/english/siddhartha_hesse.txt")
     
     embedder = embedding.Embedder()
-    embeddingsA = embedder.getSentenceListEmbedding(sentencesA[:100])
-    embeddingsB = embedder.getSentenceListEmbedding(sentencesB[:100])
+    embeddingsA = embedder.getSentenceListEmbedding(sentencesA)
+    embeddingsB = embedder.getSentenceListEmbedding(sentencesB)
     
-    pairingAtoB = pairing.matchEmbeddings(embedder, embeddingsA, embeddingsB)
-    pairintRatio = np.count_nonzero(pairingAtoB != -1) / len(pairingAtoB)
-    print("pairintRatio: " + pairintRatio)
-    
-    # Print sentence pairings
-    for i in range(20, 30): # len(pairingAtoB)
-        if(pairingAtoB[i] != -1):
-            print(sentencesA[i])
-            print(sentencesB[pairingAtoB[i]])
-            print()
+    matchedSentences = pairing.getMatchedSentences(embedder, embeddingsA, embeddingsB, sentencesA, sentencesB)
+        
+    generator = book_generator.BookGenerator()
+    generator.createEpubBook("test.epub", matchedSentences)
 
 if __name__ == '__main__':
     app = gui.MainWindow()
