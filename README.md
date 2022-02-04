@@ -20,7 +20,9 @@ Tool for generating Bilingual Books, where sentences in language A are matched t
 * Russian.
 
 Sources of free ebooks:
+
 https://www.gutenberg.org/
+
 https://archive.org/details/texts?tab=about
 
 Matching unsupported languages is done using Google Translate's API. This feature is still experimental, Google Translate API is changing rapidly allows only limited traffic.
