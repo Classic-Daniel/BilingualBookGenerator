@@ -55,7 +55,7 @@ class RtfParser(Parser):
         http://stackoverflow.com/a/188877
     Code created by Markus Jarderot: http://mizardx.blogspot.com
     """
-    def striprtf(text):
+    def striprtf(self, text):
         pattern = re.compile(r"\\([a-z]{1,32})(-?\d{1,10})?[ ]?|\\'([0-9a-f]{2})|\\([^a-z])|([{}])|[\r\n]+|(.)", re.I)
         # control words which specify a "destionation".
         destinations = frozenset((
@@ -156,7 +156,7 @@ class RtfParser(Parser):
                 elif word == 'u':
                     c = int(arg)
                     if c < 0: c += 0x10000
-                    if c > 127: out.append(unichr(c))
+                    if c > 127: out.append(chr(c))
                     else: out.append(chr(c))
                     curskip = ucskip
             elif hex: # \'xx
@@ -164,7 +164,7 @@ class RtfParser(Parser):
                     curskip -= 1
                 elif not ignorable:
                     c = int(hex,16)
-                    if c > 127: out.append(unichr(c))
+                    if c > 127: out.append(chr(c))
                     else: out.append(chr(c))
             elif tchar:
                 if curskip > 0:

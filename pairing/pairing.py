@@ -3,7 +3,7 @@ from embedding import Embedder
 import numpy as np
 
 LOOK_AHEAD = 10
-MATCH_THRESHOLD = 0.7
+MATCH_THRESHOLD = 0.85
 
 def getMatchedSentences(embedder : Embedder, embeddingsA: list[list[float]], embeddingsB: list[list[float]], sentencesA, sentencesB, sentencesPerSection=3):
     pairingsAtoB = _matchEmbeddings(embedder, embeddingsA, embeddingsB)

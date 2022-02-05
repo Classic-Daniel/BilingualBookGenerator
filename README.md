@@ -17,7 +17,7 @@ Tool for generating Bilingual Books, where sentences in language A are matched t
 * Spanish
 * Thai
 * Turkish
-* Russian.
+* Russian
 
 **Sources of free ebooks**:<br>
 https://www.gutenberg.org/<br>
