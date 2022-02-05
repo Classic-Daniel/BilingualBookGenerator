@@ -1,0 +1,1 @@
+from translation.translation import TextTranslator

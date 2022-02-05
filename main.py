@@ -4,11 +4,15 @@ import file_parser
 import embedding
 import pairing
 import book_generator
+import translation
 
 import numpy as np
 
 # temporary hardcoded generate action
 def generateAction():
+    translator = translation.TextTranslator(toLang="en", fromLang="hu")
+    print(translator.getTranslation("Hol van a kutya"))
+    
     textParser = file_parser.Parser()
     sentencesA = textParser.sentencesFromFile(os.path.dirname(__file__) + "/example_books/german/siddhartha_hesse.txt")
     sentencesB = textParser.sentencesFromFile(os.path.dirname(__file__) + "/example_books/english/siddhartha_hesse.txt")
