@@ -41,7 +41,7 @@ Matching unsupported languages is done using Google Translate's API. This featur
 2. Select the output format for the generated bilingual ebook
 3. Click the generate button. The book generation will take some time. Please be patient.
 
-##Sources of Free eBooks<br>
+## Sources of Free eBooks<br>
 https://www.gutenberg.org/<br>
 https://archive.org/details/texts?tab=about<br>
 Hungarian books: https://mek.oszk.hu/
