@@ -19,7 +19,7 @@ class Parser:
             return DocxParser().sentencesFromFile(filePath)
         
         else:       
-            raise NotImplementedError("No parser implemented for file extension ." + fileExtension)
+            raise NotImplementedError("No parser implemented for file extension " + fileExtension)
         
     def _processPlainText(self, plainText: str) -> list[str]:
         sentences = self._splitTextToSentences(plainText)

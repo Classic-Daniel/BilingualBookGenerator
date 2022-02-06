@@ -36,7 +36,7 @@ Matching unsupported languages is done using Google Translate's API. This featur
 
 ## Usage
 
-![Screenshot](doc/screenshot.jpg)
+![Screenshot](doc/screenshot.png)
 1. Select an ebook and its translation. Make sure their input formats are supported. Select the language of the ebooks.
 2. Select the output format for the generated bilingual ebook
 3. Click the generate button. The book generation will take some time. Please be patient.

@@ -49,6 +49,9 @@ class MainWindow:
     def getLanguageB(self):
         return self.languageDict[self.builder.get_variable('languageB').get()]
     
+    def setOutputMessage(self, message):
+        return self.builder.get_variable('outputMessage').set(message)
+    
     def setDefaults(self):
         self.builder.get_variable('languageA').set("English")
         self.builder.get_variable('languageB').set("German")
