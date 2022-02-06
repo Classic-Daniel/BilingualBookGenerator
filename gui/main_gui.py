@@ -40,6 +40,9 @@ class MainWindow:
     def getFilePathB(self):
         return self.builder.get_variable('filePathB').get()
     
+    def getOutputFilePath(self):
+        return self.builder.get_variable('outputFilepath').get()
+    
     def getLanguageA(self):
         return self.languageDict[self.builder.get_variable('languageA').get()]
     
@@ -52,6 +55,7 @@ class MainWindow:
         self.builder.get_variable('filePathA').set("example_books/german/siddhartha_hesse.txt")
         self.builder.get_variable('filePathB').set("example_books/english/siddhartha_hesse.txt") # example_books/hungarian/amok_zweig.rtf
         self.builder.get_variable('outputExtension').set("EPUB")
+        self.builder.get_variable('outputFilepath').set("test.epub")
         
     def defineDict(self):
         self.languageDict = {

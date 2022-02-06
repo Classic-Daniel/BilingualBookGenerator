@@ -226,6 +226,41 @@
           </object>
         </child>
         <child>
+          <object class="ttk.Frame" id="frame9">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="pady">10</property>
+              <property name="propagate">True</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label6">
+                <property name="text" translatable="yes">Output FilePath</property>
+                <property name="textvariable">string:outputFilepath</property>
+                <layout manager="pack">
+                  <property name="anchor">nw</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput3">
+                <property name="textvariable">string:filePathB</property>
+                <property name="type">file</property>
+                <layout manager="pack">
+                  <property name="anchor">nw</property>
+                  <property name="ipadx">80</property>
+                  <property name="pady">0</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
           <object class="ttk.Button" id="generateButton">
             <property name="command" type="command" cbtype="simple">generate</property>
             <property name="text" translatable="yes">Generate eBook</property>

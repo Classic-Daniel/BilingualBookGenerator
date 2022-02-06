@@ -24,7 +24,7 @@ def generateAction():
     matchedSentences = pairing.getMatchedSentences(embedder, embeddingsA, embeddingsB, sentencesA, sentencesB)
 
     generator = book_generator.BookGenerator()
-    generator.createEpubBook("test.epub", matchedSentences)
+    generator.createEpubBook(guiHandler.getOutputFilePath(), matchedSentences)
 
 if __name__ == '__main__':
     guiHandler = gui.MainWindow()
