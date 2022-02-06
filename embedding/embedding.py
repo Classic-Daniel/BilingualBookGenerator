@@ -20,5 +20,9 @@ class Embedder:
     def getEmbedDistance(self, embeddingA: list[float], embeddingB: list[float]) -> float:
         distance = tf.sqrt(tf.reduce_sum(tf.square(embeddingA - embeddingB)))
         return distance.numpy()
+    
+supportedLanguages = ["ar", "zh-CN", "zh-TW", "en", "fr", "de",
+                      "it", "ja", "ko", "nl", "pl", "pt", "es",
+                      "th", "tr", "ru"]
         
         
