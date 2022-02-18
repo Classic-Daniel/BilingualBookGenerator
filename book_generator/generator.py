@@ -1,43 +1,41 @@
 from ebooklib import epub
+from book_generator.book_meta_data import BookMetaData
 
 class BookGenerator:
     """
     Supported outputFormats: .epub
     """
-    def createBook(self, outputPath, outputFormat, matchedSentences, sentencesPerSection=3):
+    def createBook(self, outputPath, outputFormat, matchedSentences, bookMetaData):
         if(outputFormat == ".epub"):
-            self.createEpubBook()
+            self.createEpubBook(outputPath=outputPath, matchedSentences=matchedSentences, bookMetaData=bookMetaData)
     
-    def createPdfBook(self, outputPath, smatchedSentences):
+    def createPdfBook(self, outputPath, matchedSentences):
         pass
     
-    def createEpubBook(self, outputPath, matchedSentences):        
+    def createEpubBook(self, outputPath, matchedSentences, bookMetaData : BookMetaData):
         book = epub.EpubBook()
 
         # set metadata
-        book.set_identifier('id123456')
-        book.set_title('Sample book')
-        book.set_language('en')
+        # book.set_identifier('id123456')
+        book.set_title(bookMetaData.title)
+        book.set_language(bookMetaData.language)
+        book.add_author(bookMetaData.author)
 
-        book.add_author('Whoever')
-
-        # create chapter
-        c1 = epub.EpubHtml(title='Intro', file_name='chap_01.xhtml', lang='hr')
-        c1.content=u'<h1>Intro heading</h1><p>Zaba je skocila u baru.</p>'
+        c1 = epub.EpubHtml(title=bookMetaData.title, file_name='chap_01.xhtml', lang=bookMetaData.language)
+        c1.content = f'<h1>{bookMetaData.title}</h1>'
 
         for sectionPairings in matchedSentences:
             c1.content = c1.content + "<p>" + sectionPairings[0] + "</p>"
             c1.content = c1.content + "<p style=\"color:gray;\">" + sectionPairings[1] + "</p>"
-            
 
         # add chapter
         book.add_item(c1)
 
         # define Table Of Contents
-        book.toc = (epub.Link('chap_01.xhtml', 'Introduction', 'intro'),
-                    (epub.Section('Simple book'),
-                    (c1, ))
-                    )
+        # book.toc = (epub.Link('chap_01.xhtml', 'Introduction', 'intro'),
+        #             (epub.Section('Simple book'),
+        #             (c1, ))
+        #             )
 
         # add default NCX and Nav file
         book.add_item(epub.EpubNcx())

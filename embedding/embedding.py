@@ -6,7 +6,9 @@ class Embedder:
     def _download_embedding_model(self):
         # universal sentence encoder model
         moduleUrl = 'https://tfhub.dev/google/universal-sentence-encoder-multilingual/3'
+        print("Loading module url")
         self.embeddingModel = hub.load(moduleUrl)
+        print("Module url loaded")
 
     def __init__(self):
         self._download_embedding_model()

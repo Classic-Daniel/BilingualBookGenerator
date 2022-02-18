@@ -1,1 +1,2 @@
 from book_generator.generator import BookGenerator
+from book_generator.generator import BookMetaData
