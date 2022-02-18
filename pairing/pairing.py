@@ -1,6 +1,7 @@
 from cgitb import text
 from embedding import Embedder
 import numpy as np
+import globals
 
 LOOK_AHEAD = 10
 MATCH_THRESHOLD = 0.7
@@ -30,6 +31,8 @@ def _matchEmbeddings(embedder : Embedder, embeddingsA: list[list[float]], embedd
                 pairingAtoB[indexA] = indexB
                 lastMatchedIndexB = indexB
                 break
+
+            globals.guiHandler.printProgress(indexA, len(embeddingsA))
 
     return pairingAtoB
 

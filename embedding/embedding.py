@@ -1,6 +1,7 @@
 import tensorflow as tf
 import tensorflow_hub as hub
 from tensorflow_text import SentencepieceTokenizer
+import globals
 
 class Embedder:
     def _download_embedding_model(self):
@@ -14,9 +15,13 @@ class Embedder:
         self._download_embedding_model()
         
     def getSentenceEmbedding(self, sentence: str) -> list[float]:
+        self.embeddingCounter = self.embeddingCounter + 1
+        globals.guiHandler.printProgress(self.embeddingCounter, self.numOfSentences)
         return self.embeddingModel(sentence)
     
     def getSentenceListEmbedding(self, sentenceList: list[str]) -> list[list[float]]:
+        self.embeddingCounter = 0
+        self.numOfSentences = len(sentenceList)
         return list(map(self.getSentenceEmbedding, sentenceList))
     
     def getEmbedDistance(self, embeddingA: list[float], embeddingB: list[float]) -> float:

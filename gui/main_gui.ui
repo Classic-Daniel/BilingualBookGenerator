@@ -171,21 +171,21 @@
               <object class="ttk.Labelframe" id="labelframe4">
                 <property name="height">200</property>
                 <property name="text" translatable="yes">Console</property>
+                <property name="width">500</property>
                 <layout manager="pack">
                   <property name="anchor">nw</property>
                   <property name="pady">10</property>
-                  <property name="propagate">True</property>
+                  <property name="propagate">False</property>
                 </layout>
                 <child>
                   <object class="pygubu.builder.widgets.scrolledframe" id="scrolledframe1">
                     <property name="scrolltype">both</property>
                     <property name="usemousewheel">false</property>
-                    <property name="width">1000</property>
-                    <layout manager="pack">
-                      <property name="anchor">nw</property>
-                      <property name="expand">true</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
                       <property name="propagate">True</property>
-                      <property name="side">top</property>
+                      <property name="row">0</property>
+                      <property type="col" id="0" name="minsize">500</property>
                     </layout>
                     <child>
                       <object class="tk.Message" id="message2">
