@@ -45,6 +45,7 @@ Matching unsupported languages is done using Google Translate's API. This featur
 https://www.gutenberg.org/<br>
 https://archive.org/details/texts?tab=about<br>
 Hungarian books: https://mek.oszk.hu/
+German books: https://allesebook.de/kostenlose-ebooks/
 
 ## Generated eBook Examples
 

@@ -4,75 +4,59 @@
     <property name="height">200</property>
     <property name="resizable">none</property>
     <property name="title" translatable="yes">BilingualBookGenerator</property>
-    <property name="width">400</property>
     <child>
-      <object class="ttk.Labelframe" id="labelframe1">
-        <property name="height">200</property>
-        <property name="text" translatable="yes">InputFileA</property>
-        <property name="width">200</property>
-        <layout manager="pack">
-          <property name="padx">20</property>
-          <property name="pady">20</property>
-          <property name="propagate">True</property>
-          <property name="side">top</property>
+      <object class="ttk.Labelframe" id="OutputFrame">
+        <property name="relief">raised</property>
+        <property name="text" translatable="yes">Output</property>
+        <layout manager="grid">
+          <property name="column">2</property>
+          <property name="padx">10</property>
+          <property name="pady">10</property>
+          <property name="propagate">False</property>
+          <property name="row">0</property>
+          <property name="rowspan">2</property>
         </layout>
         <child>
-          <object class="ttk.Frame" id="frame1">
-            <property name="height">200</property>
-            <property name="width">400</property>
+          <object class="ttk.Frame" id="frame8">
             <layout manager="pack">
+              <property name="anchor">nw</property>
               <property name="padx">20</property>
-              <property name="pady">20</property>
               <property name="propagate">True</property>
               <property name="side">top</property>
             </layout>
             <child>
-              <object class="ttk.Frame" id="frame2">
-                <property name="height">200</property>
-                <property name="width">200</property>
+              <object class="ttk.Label" id="label5">
+                <property name="text" translatable="yes">Output Format</property>
                 <layout manager="pack">
                   <property name="anchor">nw</property>
                   <property name="propagate">True</property>
                   <property name="side">top</property>
                 </layout>
-                <child>
-                  <object class="ttk.Label" id="label1">
-                    <property name="text" translatable="yes">Language A</property>
-                    <layout manager="pack">
-                      <property name="anchor">nw</property>
-                      <property name="propagate">True</property>
-                      <property name="side">top</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="ttk.Combobox" id="combobox1">
-                    <property name="state">readonly</property>
-                    <property name="textvariable">string:languageA</property>
-                    <property name="values">Arabic Chinese-simplified Chinese-traditional English French German Italian Japanese Korean Dutch Polish Portuguese Spanish Thai Turkish Russian Hungarian(Experimental) Danish(experimental) Automatic(Experimental)</property>
-                    <property name="width">30</property>
-                    <layout manager="pack">
-                      <property name="anchor">nw</property>
-                      <property name="pady">0</property>
-                      <property name="propagate">True</property>
-                      <property name="side">top</property>
-                    </layout>
-                  </object>
-                </child>
               </object>
             </child>
             <child>
-              <object class="ttk.Frame" id="frame4">
-                <property name="height">200</property>
-                <property name="width">200</property>
+              <object class="ttk.Combobox" id="combobox3">
+                <property name="state">readonly</property>
+                <property name="textvariable">string:outputExtension</property>
+                <property name="values">EPUB</property>
                 <layout manager="pack">
+                  <property name="anchor">nw</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame9">
+                <layout manager="pack">
+                  <property name="anchor">nw</property>
                   <property name="pady">10</property>
                   <property name="propagate">True</property>
                   <property name="side">top</property>
                 </layout>
                 <child>
-                  <object class="ttk.Label" id="label2">
-                    <property name="text" translatable="yes">FilePath A</property>
+                  <object class="ttk.Label" id="label6">
+                    <property name="text" translatable="yes">Output FilePath</property>
                     <layout manager="pack">
                       <property name="anchor">nw</property>
                       <property name="propagate">True</property>
@@ -81,8 +65,8 @@
                   </object>
                 </child>
                 <child>
-                  <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput1">
-                    <property name="textvariable">string:filePathA</property>
+                  <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput3">
+                    <property name="textvariable">string:outputFilepath</property>
                     <property name="type">file</property>
                     <layout manager="pack">
                       <property name="anchor">nw</property>
@@ -95,212 +79,257 @@
                 </child>
               </object>
             </child>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="ttk.Labelframe" id="labelframe3">
-        <property name="height">200</property>
-        <property name="text" translatable="yes">InputFileB</property>
-        <property name="width">200</property>
-        <layout manager="pack">
-          <property name="padx">20</property>
-          <property name="pady">20</property>
-          <property name="propagate">True</property>
-          <property name="side">top</property>
-        </layout>
-        <child>
-          <object class="ttk.Frame" id="frame5">
-            <property name="height">200</property>
-            <property name="width">400</property>
-            <layout manager="pack">
-              <property name="padx">20</property>
-              <property name="pady">20</property>
-              <property name="propagate">True</property>
-              <property name="side">top</property>
-            </layout>
             <child>
-              <object class="ttk.Frame" id="frame6">
-                <property name="height">200</property>
-                <property name="width">200</property>
+              <object class="ttk.Button" id="generateButton">
+                <property name="command" type="command" cbtype="simple">generate</property>
+                <property name="text" translatable="yes">Generate eBook</property>
                 <layout manager="pack">
                   <property name="anchor">nw</property>
-                  <property name="propagate">True</property>
-                  <property name="side">top</property>
-                </layout>
-                <child>
-                  <object class="ttk.Label" id="label3">
-                    <property name="text" translatable="yes">Language B</property>
-                    <layout manager="pack">
-                      <property name="anchor">nw</property>
-                      <property name="propagate">True</property>
-                      <property name="side">top</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="ttk.Combobox" id="combobox2">
-                    <property name="state">readonly</property>
-                    <property name="textvariable">string:languageB</property>
-                    <property name="values">Arabic Chinese-simplified Chinese-traditional English French German Italian Japanese Korean Dutch Polish Portuguese Spanish Thai Turkish Russian Hungarian(Experimental) Danish(experimental) Automatic(Experimental)</property>
-                    <property name="width">30</property>
-                    <layout manager="pack">
-                      <property name="anchor">nw</property>
-                      <property name="pady">0</property>
-                      <property name="propagate">True</property>
-                      <property name="side">top</property>
-                    </layout>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="ttk.Frame" id="frame7">
-                <property name="height">200</property>
-                <property name="width">200</property>
-                <layout manager="pack">
                   <property name="pady">10</property>
                   <property name="propagate">True</property>
                   <property name="side">top</property>
                 </layout>
-                <child>
-                  <object class="ttk.Label" id="label4">
-                    <property name="text" translatable="yes">FilePath B</property>
-                    <layout manager="pack">
-                      <property name="anchor">nw</property>
-                      <property name="propagate">True</property>
-                      <property name="side">top</property>
-                    </layout>
-                  </object>
-                </child>
-                <child>
-                  <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput2">
-                    <property name="textvariable">string:filePathB</property>
-                    <property name="type">file</property>
-                    <layout manager="pack">
-                      <property name="anchor">nw</property>
-                      <property name="ipadx">80</property>
-                      <property name="pady">0</property>
-                      <property name="propagate">True</property>
-                      <property name="side">top</property>
-                    </layout>
-                  </object>
-                </child>
               </object>
             </child>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child>
-      <object class="ttk.Frame" id="frame8">
-        <property name="height">200</property>
-        <layout manager="pack">
-          <property name="anchor">nw</property>
-          <property name="padx">20</property>
-          <property name="propagate">True</property>
-          <property name="side">top</property>
-        </layout>
-        <child>
-          <object class="ttk.Label" id="label5">
-            <property name="text" translatable="yes">Output Format</property>
-            <layout manager="pack">
-              <property name="anchor">nw</property>
-              <property name="propagate">True</property>
-              <property name="side">top</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="ttk.Combobox" id="combobox3">
-            <property name="state">readonly</property>
-            <property name="textvariable">string:outputExtension</property>
-            <property name="values">EPUB</property>
-            <layout manager="pack">
-              <property name="anchor">nw</property>
-              <property name="propagate">True</property>
-              <property name="side">top</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="ttk.Frame" id="frame9">
-            <property name="height">200</property>
-            <property name="width">200</property>
-            <layout manager="pack">
-              <property name="anchor">nw</property>
-              <property name="pady">10</property>
-              <property name="propagate">True</property>
-              <property name="side">top</property>
-            </layout>
             <child>
-              <object class="ttk.Label" id="label6">
-                <property name="text" translatable="yes">Output FilePath</property>
+              <object class="ttk.Frame" id="messageFrame">
                 <layout manager="pack">
                   <property name="anchor">nw</property>
+                  <property name="pady">10</property>
                   <property name="propagate">True</property>
                   <property name="side">top</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput3">
-                <property name="textvariable">string:outputFilepath</property>
-                <property name="type">file</property>
+              <object class="ttk.Labelframe" id="labelframe4">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Console</property>
                 <layout manager="pack">
                   <property name="anchor">nw</property>
-                  <property name="ipadx">80</property>
-                  <property name="pady">0</property>
+                  <property name="pady">10</property>
                   <property name="propagate">True</property>
-                  <property name="side">top</property>
-                </layout>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="ttk.Button" id="generateButton">
-            <property name="command" type="command" cbtype="simple">generate</property>
-            <property name="text" translatable="yes">Generate eBook</property>
-            <layout manager="pack">
-              <property name="anchor">nw</property>
-              <property name="pady">10</property>
-              <property name="propagate">True</property>
-              <property name="side">top</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object class="ttk.Frame" id="messageFrame">
-            <property name="width">1000</property>
-            <layout manager="pack">
-              <property name="anchor">nw</property>
-              <property name="pady">10</property>
-              <property name="propagate">True</property>
-              <property name="side">top</property>
-            </layout>
-            <child>
-              <object class="pygubu.builder.widgets.scrolledframe" id="scrolledframe1">
-                <property name="scrolltype">both</property>
-                <property name="usemousewheel">false</property>
-                <property name="width">1000</property>
-                <layout manager="pack">
-                  <property name="anchor">nw</property>
-                  <property name="expand">true</property>
-                  <property name="propagate">True</property>
-                  <property name="side">top</property>
                 </layout>
                 <child>
-                  <object class="tk.Message" id="message2">
-                    <property name="text" translatable="yes">Generator output...</property>
-                    <property name="textvariable">string:outputMessage</property>
+                  <object class="pygubu.builder.widgets.scrolledframe" id="scrolledframe1">
+                    <property name="scrolltype">both</property>
+                    <property name="usemousewheel">false</property>
                     <property name="width">1000</property>
                     <layout manager="pack">
                       <property name="anchor">nw</property>
+                      <property name="expand">true</property>
                       <property name="propagate">True</property>
                       <property name="side">top</property>
                     </layout>
+                    <child>
+                      <object class="tk.Message" id="message2">
+                        <property name="text" translatable="yes">Generator output...</property>
+                        <property name="textvariable">string:outputMessage</property>
+                        <property name="width">1000</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="labelframe5">
+        <property name="height">200</property>
+        <property name="relief">raised</property>
+        <property name="text" translatable="yes">Inputs</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">10</property>
+          <property name="ipady">10</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+        </layout>
+        <child>
+          <object class="ttk.Labelframe" id="labelframe1">
+            <property name="height">200</property>
+            <property name="relief">ridge</property>
+            <property name="text" translatable="yes">InputFileA</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="pady">10</property>
+            </layout>
+            <child>
+              <object class="ttk.Frame" id="frame1">
+                <property name="height">200</property>
+                <property name="width">400</property>
+                <layout manager="pack">
+                  <property name="padx">20</property>
+                  <property name="pady">20</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Frame" id="frame2">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="anchor">nw</property>
+                      <property name="propagate">True</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Label" id="label1">
+                        <property name="text" translatable="yes">Language A</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Combobox" id="combobox1">
+                        <property name="state">readonly</property>
+                        <property name="textvariable">string:languageA</property>
+                        <property name="values">Arabic Chinese-simplified Chinese-traditional English French German Italian Japanese Korean Dutch Polish Portuguese Spanish Thai Turkish Russian Hungarian(Experimental) Danish(experimental) Automatic(Experimental)</property>
+                        <property name="width">30</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="pady">0</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="frame4">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="pady">10</property>
+                      <property name="propagate">True</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Label" id="label2">
+                        <property name="text" translatable="yes">FilePath A</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput1">
+                        <property name="textvariable">string:filePathA</property>
+                        <property name="type">file</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="ipadx">80</property>
+                          <property name="pady">0</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Labelframe" id="labelframe3">
+            <property name="height">200</property>
+            <property name="relief">ridge</property>
+            <property name="text" translatable="yes">InputFileB</property>
+            <property name="width">200</property>
+            <layout manager="pack" />
+            <child>
+              <object class="ttk.Frame" id="frame5">
+                <property name="height">200</property>
+                <property name="width">400</property>
+                <layout manager="pack">
+                  <property name="padx">20</property>
+                  <property name="pady">20</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Frame" id="frame6">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="anchor">nw</property>
+                      <property name="propagate">True</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Label" id="label3">
+                        <property name="text" translatable="yes">Language B</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Combobox" id="combobox2">
+                        <property name="state">readonly</property>
+                        <property name="textvariable">string:languageB</property>
+                        <property name="values">Arabic Chinese-simplified Chinese-traditional English French German Italian Japanese Korean Dutch Polish Portuguese Spanish Thai Turkish Russian Hungarian(Experimental) Danish(experimental) Automatic(Experimental)</property>
+                        <property name="width">30</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="pady">0</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="frame7">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="pady">10</property>
+                      <property name="propagate">True</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Label" id="label4">
+                        <property name="text" translatable="yes">FilePath B</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput2">
+                        <property name="textvariable">string:filePathB</property>
+                        <property name="type">file</property>
+                        <layout manager="pack">
+                          <property name="anchor">nw</property>
+                          <property name="ipadx">80</property>
+                          <property name="pady">0</property>
+                          <property name="propagate">True</property>
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
