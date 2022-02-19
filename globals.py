@@ -1,1 +1,6 @@
+# constants
+PAIRING_LOOK_AHEAD = 10
+PAIRING_MATCH_THRESHOLD = 0.7
+TEST_RUN_LENGTH = 200
+
 guiHandler = None

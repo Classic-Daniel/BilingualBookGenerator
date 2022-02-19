@@ -158,6 +158,26 @@
               </object>
             </child>
             <child>
+              <object class="ttk.Frame" id="frame3">
+                <layout manager="pack">
+                  <property name="anchor">nw</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Checkbutton" id="checkbutton1">
+                    <property name="text" translatable="yes">Test on first 200 sentences</property>
+                    <property name="variable">boolean:testCheckbox</property>
+                    <layout manager="pack">
+                      <property name="anchor">ne</property>
+                      <property name="propagate">True</property>
+                      <property name="side">top</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
               <object class="ttk.Frame" id="messageFrame">
                 <layout manager="pack">
                   <property name="anchor">nw</property>
@@ -217,6 +237,7 @@
           <property name="column">0</property>
           <property name="ipadx">10</property>
           <property name="ipady">10</property>
+          <property name="padx">10</property>
           <property name="propagate">True</property>
           <property name="row">0</property>
         </layout>

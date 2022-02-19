@@ -3,9 +3,6 @@ from embedding import Embedder
 import numpy as np
 import globals
 
-LOOK_AHEAD = 10
-MATCH_THRESHOLD = 0.7
-
 def getMatchedSentences(embedder : Embedder, embeddingsA: list[list[float]], embeddingsB: list[list[float]], sentencesA, sentencesB, sentencesPerSection=3):
     pairingsAtoB = _matchEmbeddings(embedder, embeddingsA, embeddingsB)
     matchedSentences = _getTextPairings(sentencesA, sentencesB, pairingsAtoB, sentencesPerSection)
@@ -23,11 +20,11 @@ def _matchEmbeddings(embedder : Embedder, embeddingsA: list[list[float]], embedd
     for embeddingA in embeddingsA:
         indexA = indexA + 1
 
-        for i in range(LOOK_AHEAD):
+        for i in range(globals.PAIRING_LOOK_AHEAD):
             indexB = min(lastMatchedIndexB + i, len(embeddingsB) - 1)
             distance = embedder.getEmbedDistance(embeddingA, embeddingsB[indexB])
             
-            if(distance < MATCH_THRESHOLD):
+            if(distance < globals.PAIRING_MATCH_THRESHOLD):
                 pairingAtoB[indexA] = indexB
                 lastMatchedIndexB = indexB
                 break

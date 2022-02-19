@@ -21,6 +21,10 @@ def generateAction():
     globals.guiHandler.addOutputMessage("Sentence extraction for input B...")
     sentencesB = textParser.sentencesFromFile(globals.guiHandler.getFilePathB())
 
+    if(globals.guiHandler.getTestRunEnabled()):
+        sentencesA = sentencesA[:globals.TEST_RUN_LENGTH]
+        sentencesB = sentencesB[:globals.TEST_RUN_LENGTH]
+
     # translate
     # textTranslator = translation.TextTranslator(fromLang="hu", toLang="en")
     # translatedSentencesB = list(map(lambda sentence: textTranslator.getTranslation(sentence), sentencesB))

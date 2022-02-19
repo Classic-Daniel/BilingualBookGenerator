@@ -41,6 +41,9 @@ class MainWindow:
     
     def getFilePathB(self):
         return self.builder.get_variable('filePathB').get()
+
+    def getTestRunEnabled(self):
+        return self.builder.get_variable('testCheckbox').get()
     
     def getOutputFilePath(self):
         return self.builder.get_variable('outputFilepath').get()
