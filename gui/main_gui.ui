@@ -166,7 +166,7 @@
                 </layout>
                 <child>
                   <object class="ttk.Checkbutton" id="checkbutton1">
-                    <property name="text" translatable="yes">Test on first 200 sentences</property>
+                    <property name="text" translatable="yes">Test on first 50 sentences</property>
                     <property name="variable">boolean:testCheckbox</property>
                     <layout manager="pack">
                       <property name="anchor">ne</property>
