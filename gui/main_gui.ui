@@ -108,6 +108,7 @@
                 </child>
                 <child>
                   <object class="ttk.Entry" id="outputTitle">
+                    <property name="text" translatable="yes">Unknown</property>
                     <layout manager="pack">
                       <property name="pady">5</property>
                       <property name="propagate">True</property>
@@ -136,6 +137,7 @@
                 </child>
                 <child>
                   <object class="ttk.Entry" id="outputAuthor">
+                    <property name="text" translatable="yes">Anonymous</property>
                     <layout manager="pack">
                       <property name="pady">5</property>
                       <property name="propagate">True</property>
@@ -185,6 +187,42 @@
                   <property name="propagate">True</property>
                   <property name="side">top</property>
                 </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame11">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="anchor">nw</property>
+                  <property name="propagate">True</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label7">
+                    <property name="text" translatable="yes">PairingThreshold</property>
+                    <layout manager="pack">
+                      <property name="anchor">w</property>
+                      <property name="padx">10</property>
+                      <property name="propagate">True</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Spinbox" id="pairingThresholdInput">
+                    <property name="from_">0.0</property>
+                    <property name="increment">0.05</property>
+                    <property name="text" translatable="yes">0.7</property>
+                    <property name="textvariable">double:pairingThreshold</property>
+                    <property name="to">1.0</property>
+                    <property name="width">5</property>
+                    <layout manager="pack">
+                      <property name="propagate">True</property>
+                      <property name="side">top</property>
+                    </layout>
+                  </object>
+                </child>
               </object>
             </child>
             <child>

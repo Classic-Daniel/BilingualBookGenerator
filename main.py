@@ -39,9 +39,9 @@ def generateAction():
 
     embedder = embedding.Embedder()
     globals.guiHandler.addOutputMessage("Embedding for input A...")
-    embeddingsA = embedder.getSentenceListEmbedding(sentencesA)
+    embeddingsA = embedder.getSentenceListEmbedding(translatedSentencesA)
     globals.guiHandler.addOutputMessage("Embedding for input B...")
-    embeddingsB = embedder.getSentenceListEmbedding(sentencesB)
+    embeddingsB = embedder.getSentenceListEmbedding(translatedSentencesB)
 
     globals.guiHandler.addOutputMessage("Sentence matching...")
     matchedSentences = pairing.getMatchedSentences(embedder, embeddingsA, embeddingsB, sentencesA, sentencesB)
@@ -60,6 +60,7 @@ def translateSentences(sentences, language):
     # translatedSentences = list(map(lambda sentence: textTranslator.getTranslation(sentence), sentences))
     translatedSentences = [translateSentence(sentence, textTranslator, counter, numOfSentences)
                            for sentence in sentences]
+    print(translatedSentences)
     return translatedSentences
 
 def translateSentence(sentence, translator, counter, numOfSentences):

@@ -8,7 +8,7 @@ def getMatchedSentences(embedder : Embedder, embeddingsA: list[list[float]], emb
     matchedSentences = _getTextPairings(sentencesA, sentencesB, pairingsAtoB, sentencesPerSection)
 
     pairingRatio = np.count_nonzero(pairingsAtoB != -1) / len(pairingsAtoB)
-    print(f"pairingRatio: {pairingRatio}")
+    globals.guiHandler.addOutputMessage(f"Ratio of paired sentences: {pairingRatio}")
 
     return matchedSentences
 
@@ -24,7 +24,7 @@ def _matchEmbeddings(embedder : Embedder, embeddingsA: list[list[float]], embedd
             indexB = min(lastMatchedIndexB + i, len(embeddingsB) - 1)
             distance = embedder.getEmbedDistance(embeddingA, embeddingsB[indexB])
             
-            if(distance < globals.PAIRING_MATCH_THRESHOLD):
+            if(distance < globals.guiHandler.getPairingThreshold()):
                 pairingAtoB[indexA] = indexB
                 lastMatchedIndexB = indexB
                 break

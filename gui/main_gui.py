@@ -58,7 +58,10 @@ class MainWindow:
     
     def getLanguageB(self):
         return self.languageDict[self.builder.get_variable('languageB').get()]
-    
+
+    def getPairingThreshold(self):
+        return self.builder.get_variable('pairingThreshold').get()
+
     def addOutputMessage(self, message):
         currentMessage = self.builder.get_variable('outputMessage').get()
         newMessage = currentMessage + "\n" + message
@@ -74,5 +77,11 @@ class MainWindow:
         self.builder.get_variable('languageB').set("German")
         self.builder.get_variable('filePathA').set("example_books/german/siddhartha_hesse.txt")
         self.builder.get_variable('filePathB').set("example_books/english/siddhartha_hesse.txt") # example_books/hungarian/amok_zweig.rtf
+        # self.builder.get_variable('languageA').set("German")
+        # self.builder.get_variable('languageB').set("Hungarian(Experimental)")
+        # self.builder.get_variable('filePathA').set(
+        #     "example_books/german/amok_zweig.txt")  # example_books/german/siddhartha_hesse.txt
+        # self.builder.get_variable('filePathB').set(
+        #     "example_books/hungarian/amok_zweig.rtf")  # self.builder.get_variable('filePathB').set("") # example_books/hungarian/amok_zweig.rtf
         self.builder.get_variable('outputExtension').set("EPUB")
         self.builder.get_variable('outputFilepath').set("test.epub")
