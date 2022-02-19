@@ -21,13 +21,21 @@ def generateAction():
     globals.guiHandler.addOutputMessage("Sentence extraction for input B...")
     sentencesB = textParser.sentencesFromFile(globals.guiHandler.getFilePathB())
 
-    if(globals.guiHandler.getTestRunEnabled()):
+    if globals.guiHandler.getTestRunEnabled():
         sentencesA = sentencesA[:globals.TEST_RUN_LENGTH]
         sentencesB = sentencesB[:globals.TEST_RUN_LENGTH]
 
-    # translate
-    # textTranslator = translation.TextTranslator(fromLang="hu", toLang="en")
-    # translatedSentencesB = list(map(lambda sentence: textTranslator.getTranslation(sentence), sentencesB))
+    # translate to english if language not supported by the sentence embedder
+    translatedSentencesA = sentencesA
+    translatedSentencesB = sentencesB
+
+    langAliasA = globals.guiHandler.getLanguageA()
+    if langAliasA not in globals.EMBEDDING_LANGUAGES:
+        translatedSentencesA = translateSentences(sentencesA, langAliasA)
+
+    langAliasB = globals.guiHandler.getLanguageB()
+    if langAliasB not in globals.EMBEDDING_LANGUAGES:
+        translatedSentencesB = translateSentences(sentencesB, langAliasB)
 
     embedder = embedding.Embedder()
     globals.guiHandler.addOutputMessage("Embedding for input A...")
@@ -43,6 +51,23 @@ def generateAction():
     generator.createEpubBook(globals.guiHandler.getOutputFilePath(), matchedSentences,
                              bookMetaData=globals.guiHandler.getOutputMetaData())
     globals.guiHandler.addOutputMessage("Book generation finished")
+
+def translateSentences(sentences, language):
+    counter = [0]  # trick to be able to pass int by reference
+    numOfSentences = len(sentences)
+    globals.guiHandler.addOutputMessage("Text translation...")
+    textTranslator = translation.TextTranslator(fromLang=language, toLang="en")
+    # translatedSentences = list(map(lambda sentence: textTranslator.getTranslation(sentence), sentences))
+    translatedSentences = [translateSentence(sentence, textTranslator, counter, numOfSentences)
+                           for sentence in sentences]
+    return translatedSentences
+
+def translateSentence(sentence, translator, counter, numOfSentences):
+    translatedSentence = translator.getTranslation(sentence)
+    counter[0] = counter[0] + 1
+    globals.guiHandler.printProgress(counter[0], numOfSentences)
+    return translatedSentence
+
 
 if __name__ == '__main__':
     globals.guiHandler = gui.MainWindow()

@@ -1,11 +1,11 @@
 import pathlib
 import pygubu
 import threading
+import globals
 from book_generator import BookMetaData
 
 PROJECT_PATH = pathlib.Path(__file__).parent
 PROJECT_UI = PROJECT_PATH / "main_gui.ui"
-
 
 class MainWindow:
     def __init__(self, master=None):
@@ -21,8 +21,8 @@ class MainWindow:
 
         # 4: Connect callbacks
         builder.connect_callbacks(self)
-        
-        self.defineDict()
+
+        self.languageDict = globals.LANGUAGE_ALIASES
         self.setDefaults()
         self.outputMessage = self.builder.get_variable('outputMessage').get()
 
@@ -76,26 +76,3 @@ class MainWindow:
         self.builder.get_variable('filePathB').set("example_books/english/siddhartha_hesse.txt") # example_books/hungarian/amok_zweig.rtf
         self.builder.get_variable('outputExtension').set("EPUB")
         self.builder.get_variable('outputFilepath').set("test.epub")
-        
-    def defineDict(self):
-        self.languageDict = {
-            "Arabic": "ar",
-            "Chinese-simplified": "zh-CN",
-            "Chinese-traditional": "zh-TW",
-            "English": "en",
-            "French": "fr",
-            "German": "de",
-            "Italian": "it",
-            "Japanese": "ja",
-            "Korean": "ko",
-            "Dutch": "nl",
-            "Polish": "pl",
-            "Portuguese": "pt",
-            "Spanish": "es",
-            "Thai": "th",
-            "Turkish": "tr",
-            "Russian": "ru",
-            "Hungarian(Experimental)": "hu",
-            "Danish(experimental)": "da",
-            "Automatic(Experimental)": "auto"
-        }
