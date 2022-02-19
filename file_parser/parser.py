@@ -1,6 +1,7 @@
 import os
-from pydoc import plain
 import re
+import ebooklib
+from bs4 import BeautifulSoup
 
 class Parser:    
     def sentencesFromFile(self, filePath: str) -> list[str]:
@@ -17,6 +18,9 @@ class Parser:
             
         elif(fileExtension == ".docx"):
             return DocxParser().sentencesFromFile(filePath)
+
+        elif(fileExtension == ".epub"):
+            return EpubParser().sentencesFromFile(filePath)
         
         else:       
             raise NotImplementedError("No parser implemented for file extension " + fileExtension)
@@ -178,7 +182,25 @@ class TxtParser(Parser):
         with open(filePath, "r") as file:
             plainText = file.read()
             return self._processPlainText(plainText)
-    
+
+class EpubParser(Parser):
+    def sentencesFromFile(self, filePath):
+        book = ebooklib.epub.read_epub(filePath)
+        items = list(book.get_items_of_type(ebooklib.ITEM_DOCUMENT))
+
+        sentences = []
+        for item in items:
+            sentences = sentences + self.chapter_to_sentences(item)
+
+        print(sentences)
+        return sentences
+
+    def chapter_to_sentences(self, chapter):
+        soup = BeautifulSoup(chapter.get_body_content(), "html.parser")
+        text = [para.get_text() for para in soup.find_all("p")]
+        text = " ".join(text)
+        return self._processPlainText(text)
+
 class DocParser(Parser):
     def sentencesFromFile(self, filePath):
         raise NotImplementedError

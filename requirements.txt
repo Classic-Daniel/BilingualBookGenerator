@@ -5,3 +5,5 @@ deep_translator
 tensorflow
 tensorflow_text
 tensorflow_hub
+ebooklib
+bs4
