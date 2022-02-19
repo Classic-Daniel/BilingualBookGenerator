@@ -1,0 +1,7 @@
+pygubu == 0.19
+pygubu-designer == 0.23
+ebooklib
+deep_translator
+tensorflow
+tensorflow_text
+tensorflow_hub
